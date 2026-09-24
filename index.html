@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Amica — Your safety, our mission</title>
+  <meta name="description" content="Amica is a women's safety app from Sri Lanka: one-hold SOS with live location, a journey timer your circle can see, bus-stop alerts, fake calls and a secret voice phrase.">
+  <meta name="theme-color" content="#7C4DEB">
+  <meta property="og:title" content="Amica — Your safety, our mission">
+  <meta property="og:description" content="A calm, discreet safety companion for every journey home.">
+  <meta property="og:image" content="assets/images/amica-logo.png">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    document.documentElement.classList.add('js');
+    // Apply the saved theme before first paint so the page never flashes.
+    try { var t = localStorage.getItem('amica-theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <!-- Pastel "Blossom" ground — the same washes the app paints behind every screen -->
+  <div class="ground" aria-hidden="true"><i class="g1"></i><i class="g2"></i><i class="g3"></i><i class="g4"></i></div>
+
+  <!-- ─────────────── Header ─────────────── -->
+  <header class="site-header" id="top">
+    <div class="wrap header-inner">
+      <a href="#top" class="brand" aria-label="Amica home">
+        <img src="assets/images/amica-mark.png" alt="" width="34" height="39">
+        <span>Amica</span>
+      </a>
+      <nav class="nav" id="nav" aria-label="Main">
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#screens">Screens</a>
+        <a href="#team">Team</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact" class="nav-cta-mobile">Contact us</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Light / dark">
+          <svg class="i-moon" viewBox="0 0 24 24" width="19" height="19"><path d="M19 13.6A7.2 7.2 0 0 1 10.4 5a7.5 7.5 0 1 0 8.6 8.6Z" fill="currentColor"/></svg>
+          <svg class="i-sun" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2" fill="currentColor" stroke="none"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6 6 6M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></svg>
+        </button>
+        <a href="#contact" class="btn btn-primary btn-sm hide-sm">Contact us</a>
+        <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+          <span class="burger" aria-hidden="true"><i></i><i></i><i></i></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ─────────────── Hero ─────────────── -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy intro">
+          <span class="eyebrow"><span class="dot"></span>Women's safety app · in development</span>
+          <h1>Your safety,<br><span class="grad-text">our mission.</span></h1>
+          <p class="lead">Amica is a calm, discreet companion for every journey home. One hold sends your live location to the people you trust, and a journey timer lets them know you arrived.</p>
+          <div class="hero-ctas">
+            <a href="#contact" class="btn btn-primary">Get early access
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a href="#how" class="btn btn-ghost">See how it works</a>
+          </div>
+          <ul class="hero-trust">
+            <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 5 6v5c0 4.4 3 8.2 7 9.5 4-1.3 7-5.1 7-9.5V6Z"/><path d="m9 12 2 2 4-4"/></svg>Built in Sri Lanka</li>
+            <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h9M8.5 3v2M6 5c0 4 3 7 6 8M11 5c0 4-3 7-7 8M13 21l4-9 4 9M14.5 18h5"/></svg>English · සිංහල · தமிழ்</li>
+            <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 13.6A7.2 7.2 0 0 1 10.4 5a7.5 7.5 0 1 0 8.6 8.6Z"/></svg>Discreet night mode</li>
+          </ul>
+        </div>
+
+        <div class="hero-visual intro" id="heroVisual">
+          <img class="phone phone-back" src="assets/images/screens/journey.webp" alt="Amica journey screen: walking home with 18 minutes left, shared with your circle" width="311" height="651">
+          <img class="phone phone-front" data-light="assets/images/screens/home.webp" data-dark="assets/images/screens/night.webp" src="assets/images/screens/home.webp" alt="Amica home screen with the SOS hold button and quick safety options" width="311" height="651">
+          <div class="float-card fc-1 glass">
+            <span class="chip chip-sage"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m5 12 4 4 10-10"/></svg></span>
+            <div><strong>Arrived safely</strong><small>Kavindi was notified</small></div>
+          </div>
+          <div class="float-card fc-2 glass">
+            <span class="chip chip-rose"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 5 6v5c0 4.4 3 8.2 7 9.5 4-1.3 7-5.1 7-9.5V6Z"/><path d="M12 8v4M12 15.5v.5"/></svg></span>
+            <div><strong>SOS in 2 seconds</strong><small>5 more to cancel</small></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wrap">
+        <dl class="stats glass reveal">
+          <div><dt><span data-count="2">2</span> s</dt><dd>hold to send an SOS</dd></div>
+          <div><dt><span data-count="5">5</span> s</dt><dd>to cancel a false alarm</dd></div>
+          <div><dt><span data-count="2">2</span> km</dt><dd>default warning before your stop</dd></div>
+          <div><dt><span data-count="3">3</span></dt><dd>languages from day one</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ─────────────── Features ─────────────── -->
+    <section class="section" id="features">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <span class="eyebrow">What Amica does</span>
+          <h2>Quiet tools for loud moments.</h2>
+          <p>Every feature is built to be used one-handed, at night, by someone who might be frightened. Nothing flashy, nothing that gives you away.</p>
+        </header>
+
+        <div class="features">
+          <article class="feature feature-sos glass reveal">
+            <span class="chip chip-rose lg"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 5 6v5c0 4.4 3 8.2 7 9.5 4-1.3 7-5.1 7-9.5V6Z"/><path d="M12 8v4M12 15.5v.5"/></svg></span>
+            <h3>One-hold SOS with live location</h3>
+            <p>Press and hold for two seconds. Amica gives you five more to cancel, then sends your live location to everyone in your circle.</p>
+            <span class="tag tag-rose">Emergency</span>
+          </article>
+
+          <article class="feature glass reveal">
+            <span class="chip chip-accent lg"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg></span>
+            <h3>Smart journey timer</h3>
+            <p>Set where you're going and when you should get there. If you don't check in as safe, Amica escalates to your circle automatically.</p>
+          </article>
+
+          <article class="feature glass reveal">
+            <span class="chip chip-sage lg"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 19c0-3 2.7-5 6-5s6 2 6 5M15 14.5c3 0 5 1.7 5 4.5"/></svg></span>
+            <h3>Your circle</h3>
+            <p>Add the people you trust as guardians. Those who also use Amica get instant push alerts; everyone else gets an SMS.</p>
+          </article>
+
+          <article class="feature glass reveal">
+            <span class="chip chip-sky lg"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14M8 21l1-4M16 21l-1-4"/></svg></span>
+            <h3>Bus &amp; train stop alert</h3>
+            <p>Pick the stop you're getting off at. Amica sounds an alarm when you're close, so you can rest your eyes on the long ride home.</p>
+          </article>
+
+          <article class="feature glass reveal">
+            <span class="chip chip-orchid lg"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span>
+            <h3>Fake call</h3>
+            <p>Schedule a realistic incoming call to step out of an uncomfortable situation. It looks like your phone's own call screen, not a safety app.</p>
+          </article>
+
+          <article class="feature glass reveal">
+            <span class="chip chip-accent lg"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span>
+            <h3>Stealth voice SOS</h3>
+            <p>Choose up to ten secret phrases. Say one during a fake call and Amica alerts your circle silently, without you touching the screen.</p>
+          </article>
+
+          <article class="feature glass reveal">
+            <span class="chip chip-gold lg"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M8 12h8"/></svg></span>
+            <h3>Scan before you ride</h3>
+            <p>Scan a taxi or tuk-tuk number plate to see how other riders rated it, and send the plate to your circle as you board.</p>
+            <span class="tag tag-gold">Coming soon</span>
+          </article>
+
+          <article class="feature glass reveal">
+            <span class="chip chip-night lg"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M19 13.6A7.2 7.2 0 0 1 10.4 5a7.5 7.5 0 1 0 8.6 8.6Z" fill="currentColor"/></svg></span>
+            <h3>Discreet mode</h3>
+            <p>A dark, low-glare theme with silent, preview-free notifications. A bright screen on a bus at night shouldn't announce a safety app.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────── Story banner ─────────────── -->
+    <section class="story">
+      <div class="wrap">
+        <figure class="story-card reveal" data-reveal="zoom">
+          <img src="assets/images/night-walk.svg" alt="Illustration of a woman walking home through a city at dusk while her phone shares her route with her circle" width="1200" height="520">
+          <figcaption>
+            <blockquote>“Text me when you get home.”</blockquote>
+            <p>Amica turns the promise we all make to each other into something that happens on its own.</p>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ─────────────── How it works ─────────────── -->
+    <section class="section" id="how">
+      <div class="wrap how-grid">
+        <div class="how-visual reveal" data-reveal="left">
+          <img class="phone" src="assets/images/screens/circle.webp" alt="Amica circle screen listing three guardians" width="311" height="651">
+        </div>
+        <div>
+          <header class="section-head left reveal">
+            <span class="eyebrow">How it works</span>
+            <h2>Set up once. Protected every time you leave.</h2>
+          </header>
+          <ol class="steps">
+            <li class="reveal"><span class="step-n">1</span><div><h3>Create your profile</h3><p>Sign up with email or Google, add your phone number and, if you like, medical notes for responders.</p></div></li>
+            <li class="reveal"><span class="step-n">2</span><div><h3>Build your circle</h3><p>Choose the guardians Amica should reach first: family, a best friend, a flatmate.</p></div></li>
+            <li class="reveal"><span class="step-n">3</span><div><h3>Start a journey</h3><p>Walking, by bus, train or taxi: set your destination and Amica estimates when you should arrive.</p></div></li>
+            <li class="reveal"><span class="step-n">4</span><div><h3>Check in, or let Amica act</h3><p>Tap “I'm safe” when you arrive. If you don't, your circle gets your last location and a call is placed to your primary contact.</p></div></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────── Screens gallery ─────────────── -->
+    <section class="section section-tint" id="screens">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <span class="eyebrow">Inside the app</span>
+          <h2>Soft by design. Serious underneath.</h2>
+          <p>Amica's “Blossom” design uses lavender and orchid for everyday actions. Rose-red is reserved for emergencies, so it can never be mistaken for anything else.</p>
+        </header>
+      </div>
+      <div class="gallery" id="gallery" tabindex="0" aria-label="App screenshots, scroll sideways">
+        <figure class="shot reveal"><img src="assets/images/screens/home.webp" alt="Home screen" width="311" height="651"><figcaption><strong>Home</strong>SOS and quieter options, one thumb away.</figcaption></figure>
+        <figure class="shot reveal"><img src="assets/images/screens/journey.webp" alt="Live journey screen" width="311" height="651"><figcaption><strong>Live journey</strong>A countdown your circle can follow.</figcaption></figure>
+        <figure class="shot reveal"><img src="assets/images/screens/sos.webp" alt="SOS active screen" width="311" height="651"><figcaption><strong>SOS active</strong>Clear status of who was reached.</figcaption></figure>
+        <figure class="shot reveal"><img src="assets/images/screens/stop.webp" alt="Bus stop alert screen" width="311" height="651"><figcaption><strong>Stop alert</strong>Wakes you before your stop.</figcaption></figure>
+        <figure class="shot reveal"><img src="assets/images/screens/circle.webp" alt="Circle screen" width="311" height="651"><figcaption><strong>Your circle</strong>The people who come first.</figcaption></figure>
+        <figure class="shot reveal"><img src="assets/images/screens/night.webp" alt="Home screen in discreet dark mode" width="311" height="651"><figcaption><strong>Discreet mode</strong>Dark, silent and low-glare.</figcaption></figure>
+      </div>
+      <div class="wrap gallery-ctrls">
+        <button class="icon-btn" type="button" data-scroll="-1" aria-label="Previous screens"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m15 6-6 6 6 6"/></svg></button>
+        <button class="icon-btn" type="button" data-scroll="1" aria-label="Next screens"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m9 6 6 6-6 6"/></svg></button>
+      </div>
+    </section>
+
+    <!-- ─────────────── Principles ─────────────── -->
+    <section class="section" id="principles">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <span class="eyebrow">What we promise</span>
+          <h2>Principles we build by.</h2>
+        </header>
+        <div class="principles">
+          <div class="principle reveal"><span class="p-icon">01</span><h3>Readable in the dark</h3><p>Every line of text meets at least a 4.5:1 contrast ratio, in both light and dark mode.</p></div>
+          <div class="principle reveal"><span class="p-icon">02</span><h3>Red means emergency</h3><p>Rose-red appears only on SOS surfaces. Nothing else in the app borrows that colour.</p></div>
+          <div class="principle reveal"><span class="p-icon">03</span><h3>Honest about limits</h3><p>We tell you when a message was sent, not pretend it was delivered. Phones, SIMs and networks can fail, and we say so.</p></div>
+          <div class="principle reveal"><span class="p-icon">04</span><h3>Your data, your circle</h3><p>Your location is shared with the guardians you choose, when you choose. It is never sold or used for ads.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────── Team ─────────────── -->
+    <section class="section section-tint" id="team">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <span class="eyebrow">The people behind Amica</span>
+          <h2>Meet the team.</h2>
+          <p>Three developers building the safety app we wanted for our own friends and families.</p>
+        </header>
+        <div class="team">
+          <article class="member glass reveal">
+            <div class="avatar a1" aria-hidden="true">MK</div>
+            <h3>Manuthi Kasuntha</h3>
+            <p class="role">Developer · Co-creator</p>
+            <p>Shaping how Amica looks, feels and behaves when it matters most.</p>
+            <a class="member-link" href="#contact" data-topic="Message for Manuthi">Send a message</a>
+          </article>
+          <article class="member glass reveal">
+            <div class="avatar a2" aria-hidden="true">NB</div>
+            <h3>Nimsika Bosilu</h3>
+            <p class="role">Developer · Co-creator</p>
+            <p>Making sure every alert reaches the right person at the right time.</p>
+            <a class="member-link" href="#contact" data-topic="Message for Nimsika">Send a message</a>
+          </article>
+          <article class="member glass reveal">
+            <div class="avatar a3" aria-hidden="true">SW</div>
+            <h3>Sineth Wickramaratna</h3>
+            <p class="role">Developer · Co-creator</p>
+            <p>Turning safety ideas into features you can trust on the way home.</p>
+            <a class="member-link" href="#contact" data-topic="Message for Sineth">Send a message</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────── FAQ ─────────────── -->
+    <section class="section" id="faq">
+      <div class="wrap faq-wrap">
+        <header class="section-head reveal">
+          <span class="eyebrow">Questions</span>
+          <h2>Frequently asked.</h2>
+        </header>
+        <div class="faq">
+          <details class="glass reveal"><summary>When can I download Amica?</summary><p>Amica is currently in development as an Android app. Leave your details in the form below and choose “Early access” — we'll let you know as soon as a test build is ready.</p></details>
+          <details class="glass reveal"><summary>Do my guardians need to install Amica?</summary><p>No. Guardians without the app receive SMS messages with your location. Guardians who do have Amica also get instant push alerts.</p></details>
+          <details class="glass reveal"><summary>Does Amica cost anything?</summary><p>The app is free while in development. SOS and journey alerts use your phone's SMS and calls, so your mobile carrier may charge its usual rates.</p></details>
+          <details class="glass reveal"><summary>Which languages are supported?</summary><p>Amica is being built in English, Sinhala (සිංහල) and Tamil (தமிழ்).</p></details>
+          <details class="glass reveal"><summary>Is Amica a replacement for emergency services?</summary><p>No. Amica helps the people you trust find you quickly, but in immediate danger you should always contact local emergency services — in Sri Lanka, Police Emergency is 119.</p></details>
+          <details class="glass reveal"><summary>Can organisations partner with Amica?</summary><p>Yes — universities, workplaces, transport operators and women's organisations are welcome to reach out. Choose “Partnership” in the contact form.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────── Contact ─────────────── -->
+    <section class="section" id="contact">
+      <div class="wrap">
+        <div class="contact glass reveal" data-reveal="scale">
+          <div class="contact-info">
+            <span class="eyebrow on-brand">Contact us</span>
+            <h2>Let's talk about Amica.</h2>
+            <p>Want early access, have feedback, or want to partner with us? Send us a message and the team will get back to you.</p>
+            <ul class="contact-list">
+              <li><span class="chip"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg></span><div><small>Email</small><a id="contactEmailLink" href="mailto:teamkintsugi2026@gmail.com">teamkintsugi2026@gmail.com</a></div></li>
+              <li><span class="chip"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><div><small>Based in</small><span>Sri Lanka</span></div></li>
+              <li><span class="chip"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><small>Response time</small><span>Usually within 2 working days</span></div></li>
+            </ul>
+            <img class="contact-logo" src="assets/images/amica-logo.png" alt="Amica logo — Your safety, our mission" width="190" height="215">
+          </div>
+
+          <form class="contact-form" id="contactForm" action="https://formsubmit.co/teamkintsugi2026@gmail.com" method="POST" novalidate>
+            <!-- Delivery settings for FormSubmit (formsubmit.co). They also make the form work with JavaScript turned off. -->
+            <input type="hidden" name="_subject" value="New message from the Amica website">
+            <input type="hidden" name="_template" value="table">
+            <div class="field-row">
+              <label class="field"><span>Your name</span><input type="text" name="name" autocomplete="name" required placeholder="e.g. Nethmi Perera"></label>
+              <label class="field"><span>Email</span><input type="email" name="email" autocomplete="email" required placeholder="you@example.com"></label>
+            </div>
+            <fieldset class="field">
+              <legend>I'm interested in</legend>
+              <div class="pills">
+                <label><input type="radio" name="topic" value="Early access" checked><span>Early access</span></label>
+                <label><input type="radio" name="topic" value="Feedback"><span>Feedback</span></label>
+                <label><input type="radio" name="topic" value="Partnership"><span>Partnership</span></label>
+                <label><input type="radio" name="topic" value="Press"><span>Press</span></label>
+                <label><input type="radio" name="topic" value="Other"><span>Other</span></label>
+              </div>
+            </fieldset>
+            <label class="field"><span>Subject</span><input type="text" name="subject" id="subject" placeholder="What's this about?"></label>
+            <label class="field"><span>Message</span><textarea name="message" rows="5" required placeholder="Tell us a little more…"></textarea></label>
+            <label class="check"><input type="checkbox" name="consent" required><span>I agree that the Amica team can contact me about this message.</span></label>
+            <!-- Honeypot: real people never see or fill this field -->
+            <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button class="btn btn-primary btn-block" type="submit" id="submitBtn"><span class="btn-label">Send message</span>
+              <svg class="send-ico" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="m4 12 16-8-6 16-2-7Z"/></svg><span class="spinner" aria-hidden="true"></span></button>
+            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+
+            <!-- Shown after a message is delivered -->
+            <div class="form-success" id="formSuccess" hidden>
+              <svg class="tick" viewBox="0 0 64 64" width="84" height="84" aria-hidden="true"><circle cx="32" cy="32" r="29"/><path d="m20 33 8 8 16-17"/></svg>
+              <h3>Message sent!</h3>
+              <p>Thank you for reaching out. The Amica team usually replies within 2 working days.</p>
+              <button type="button" class="btn btn-ghost btn-sm" id="sendAnother">Send another message</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ─────────────── Footer ─────────────── -->
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <a href="#top" class="brand"><img src="assets/images/amica-mark.png" alt="" width="30" height="34"><span>Amica</span></a>
+        <p>Your safety, our mission.</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="#features">Features</a><a href="#how">How it works</a><a href="#team">Team</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+      </nav>
+      <p class="footer-note">In immediate danger? Call <a href="tel:119"><strong>119</strong></a> (Sri Lanka Police Emergency).</p>
+    </div>
+    <div class="wrap footer-base">
+      <span>© <span id="year">2026</span> Amica · Team Kintsugi</span>
+      <span>Made with care in Sri Lanka</span>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="js/main.js"></script>
+</body>
+</html>
