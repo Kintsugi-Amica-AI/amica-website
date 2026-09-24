@@ -22,31 +22,29 @@ assets/images/          logo, favicon, illustration, app screenshots (screens/*.
 
 ## Receiving messages (contact form)
 
-Messages from the contact form are emailed to the team inbox **teamkintsugi2026@gmail.com** through
-[FormSubmit](https://formsubmit.co) — a free form-to-email service, so the site needs no server.
+The form posts to a Firebase function in **amica-cloud-backend**:
 
-**One-time activation (do this once):**
+```
+https://us-central1-amica-cloud-backend.cloudfunctions.net/submitContactMessage
+```
 
-1. Put the site on a web address (or run it locally with `npx serve .` — the form doesn't send from a
-   page opened straight from disk as `file://`).
-2. Send a test message from the form.
-3. FormSubmit emails **teamkintsugi2026@gmail.com** a message titled "Action Required: Activate FormSubmit".
-   Open it and click **Activate Form**.
-4. From then on every message arrives in that inbox as a table (name, email, topic, subject, message).
-   Just press **Reply** — the reply goes straight to the person who wrote in.
+The function checks the message, saves it in Firestore (`contact_messages`) and emails it to
+**teamkintsugi2026@gmail.com**. Press **Reply** on that email to answer the visitor directly. Every
+message is also kept in the Firebase console, so nothing is lost if an email fails.
 
-Optional: after activation FormSubmit also gives you a random alias (e.g. `https://formsubmit.co/ajax/a1b2c3…`).
-Using it in place of the email address in `js/main.js` and `index.html` hides the inbox address from spammers.
+One-time setup (Gmail App Password, secret, deploy) is in
+`amica-cloud-backend/docs/contact_form_setup.md`.
 
-**Settings** — the `CONFIG` block at the top of `js/main.js`:
+Settings — the `CONFIG` block at the top of `js/main.js`:
 
-- `CONTACT_EMAIL` — the team inbox, shown on the page and used as the "send by email instead" fallback.
-- `FORM_ENDPOINT` — where messages are posted. Swap in another service (Formspree, Web3Forms, or a Firebase
-  HTTPS function in `amica-cloud-backend`) by changing this URL. Leave it empty to make the form open the
-  visitor's email app instead.
+- `CONTACT_EMAIL` — shown on the page and used for the "send it by email instead" link if sending fails.
+- `FORM_ENDPOINT` — the function URL above.
 
-Spam protection: a hidden honeypot field (`_honey`) silently drops bots. If a send fails, the visitor is
-offered a link to email the team directly, so no message is lost.
+The function only accepts requests from `localhost`, `127.0.0.1` and the project's Firebase Hosting
+domains. When the website gets its own domain, add it to `CONTACT_ALLOWED_ORIGINS` in
+`amica-cloud-backend/functions/src/services/contactMessageService.ts` and redeploy.
+
+Spam protection: a hidden honeypot field (`_honey`) and a limit of 5 messages per hour per sender.
 
 ## Motion
 

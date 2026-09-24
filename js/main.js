@@ -2,18 +2,16 @@
  * ------------------------------------------------------------------
  * CONFIG
  *
- *  CONTACT_EMAIL  The team inbox. Shown on the page, used as the
- *                 mailto: fallback, and the address FormSubmit delivers
- *                 contact-form messages to.
- *  FORM_ENDPOINT  Where the contact form posts (JSON). By default this is
- *                 FormSubmit's AJAX endpoint for CONTACT_EMAIL, which emails
- *                 every message to the team inbox — no server needed.
- *                 See README.md → "Receiving messages" for the one-time
- *                 activation step and how to swap in another service.
+ *  CONTACT_EMAIL  The team inbox. Shown on the page and used as the
+ *                 "send it by email instead" fallback.
+ *  FORM_ENDPOINT  The Firebase function that receives contact-form
+ *                 messages (amica-cloud-backend → submitContactMessage).
+ *                 It saves each message in Firestore and emails it to the
+ *                 team inbox. See README.md → "Receiving messages".
  */
 const CONFIG = {
   CONTACT_EMAIL: 'teamkintsugi2026@gmail.com',
-  FORM_ENDPOINT: 'https://formsubmit.co/ajax/teamkintsugi2026@gmail.com',
+  FORM_ENDPOINT: 'https://us-central1-amica-cloud-backend.cloudfunctions.net/submitContactMessage',
 };
 
 (function () {
@@ -303,22 +301,19 @@ const CONFIG = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          Name: payload.name,
-          Email: payload.email,
-          'Interested in': payload.topic,
-          Subject: payload.subject,
-          Message: payload.message,
-          'Sent from': window.location.href,
-          // FormSubmit options
-          _subject: `[Amica website] ${payload.topic}: ${payload.subject}`,
-          _replyto: payload.email,
-          _template: 'table',
-          _captcha: 'false',
+          ...payload,
+          consent: true,
+          page: window.location.href,
+          _honey: data._honey || '',
         }),
       });
       const out = await res.json().catch(() => ({}));
-      const ok = res.ok && String(out.success) === 'true';
-      if (!ok) throw new Error(out.message || `HTTP ${res.status}`);
+      if (!res.ok || out.success !== true) {
+        const err = new Error(out.message || `HTTP ${res.status}`);
+        // 400 = something to fix in the form, 429 = too many messages: show the server's words.
+        err.userMessage = (res.status === 400 || res.status === 429) ? out.message : '';
+        throw err;
+      }
 
       form.reset();
       success.hidden = false;
@@ -329,9 +324,8 @@ const CONFIG = {
       link.href = mailtoHref(payload);
       link.textContent = 'send it by email instead';
       const msg = document.createDocumentFragment();
-      if (/activat/i.test(err.message)) {
-        // FormSubmit hasn't been activated for the team inbox yet (one-time step, see README).
-        msg.append('Our contact form is still being set up. Please ', link, ' for now.');
+      if (err.userMessage) {
+        msg.append(`${err.userMessage} `, 'You can also ', link, '.');
       } else {
         msg.append("We couldn't send your message right now. Please try again, or ", link, '.');
       }

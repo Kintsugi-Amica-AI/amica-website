@@ -302,10 +302,8 @@
             <img class="contact-logo" src="assets/images/amica-logo.png" alt="Amica logo — Your safety, our mission" width="190" height="215">
           </div>
 
-          <form class="contact-form" id="contactForm" action="https://formsubmit.co/teamkintsugi2026@gmail.com" method="POST" novalidate>
-            <!-- Delivery settings for FormSubmit (formsubmit.co). They also make the form work with JavaScript turned off. -->
-            <input type="hidden" name="_subject" value="New message from the Amica website">
-            <input type="hidden" name="_template" value="table">
+          <!-- Posts to the Firebase function in amica-cloud-backend (also works with JavaScript turned off). -->
+          <form class="contact-form" id="contactForm" action="https://us-central1-amica-cloud-backend.cloudfunctions.net/submitContactMessage" method="POST" novalidate>
             <div class="field-row">
               <label class="field"><span>Your name</span><input type="text" name="name" autocomplete="name" required placeholder="e.g. Nethmi Perera"></label>
               <label class="field"><span>Email</span><input type="email" name="email" autocomplete="email" required placeholder="you@example.com"></label>
